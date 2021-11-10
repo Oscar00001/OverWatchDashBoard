@@ -1,58 +1,34 @@
 package com.oscar.ovewatchdashboard.data;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-
-// package com.example.batchprocessing;
-import com.oscar.ovewatchdashboard.model.Match;
+import java.time.format.DateTimeFormatter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
-//item takes the inpput and output type 
-//input is the data 
-// output will return the process method
+import com.oscar.ovewatchdashboard.model.Match;
+
 public class MatchDataProcessor implements ItemProcessor<MatchInput, Match> {
+    private static final Logger log = LoggerFactory.getLogger(MatchDataProcessor.class);
 
-  private static final Logger log = LoggerFactory.getLogger(MatchDataProcessor.class);
+    @Override
+    public Match process(final MatchInput matchInput) throws Exception {
+        Match match = new Match();
+        System.out.println(matchInput.getRound_start_time());
+        match.setRoundStartTime((LocalDate.parse(matchInput.getRound_start_time())));
+        match.setMatchId(Integer.parseInt(matchInput.getMatch_id()));
+        match.setGameNumber(Long.parseLong(matchInput.getGame_number()));
+        match.setMatchWinner(matchInput.getMatch_winner());
+        match.setMapWinner(matchInput.getMap_winner());
+        match.setMapLoser(matchInput.getMap_lose());
+        match.setMapRound(Long.parseLong(matchInput.getMap_round()));
+        match.setWinningTeamFinalMapScore(Long.parseLong(matchInput.getWinning_team_final_map_score()));
+        match.setLosingTeamFinalMapScore(Long.parseLong(matchInput.getLosing_team_final_map_score()));
+        match.setControlRoundName((matchInput.getControl_round_name()));
+        match.setAttacker(matchInput.getAttacker());
+        match.setDefender(matchInput.getDefender());
+        match.setAttackerPayloadDistance(Double.parseDouble(matchInput.getAttacker_payload_distance()));
 
-  @Override
-  public Match process(final MatchInput matchInput) throws Exception {
-
-    // private LocalDateTime startTime;
-    // private long   id;
-    // private String tournamentTitle;
-    // private String mapType;
-    // private String mapName;
-    // private String playerName;
-    // private String teamName;
-    // private String statName;
-    // private String heroName;
-    // private double statAmount;
-    /**
-     * id = id 
-     * city = name  map 
-     * date = date 
-     * team = team 
-     * venue = type map 
-     * hero = last name? 
-     * player = name 
-     */
-
-    Match match = new Match();
-    match.setStartTime(LocalDateTime.parse(matchInput.getStart_time()));
-    match.setId(Long.parseLong(matchInput.getEsports_match_id()));
-    match.setTournamentTitle(matchInput.getTournament_title());
-    match.setMapType(matchInput.getMap_type());
-    match.setMapName(matchInput.getMap_name());
-    match.setPlayerName(matchInput.getPlayer_name());
-    match.setTeamName(matchInput.getTeam_name());
-    match.setStatName(matchInput.getStat_name());
-    match.setHeroName(matchInput.getHero_name());
-    match.setStatAmount(Double.parseDouble(matchInput.getStat_amount()));
-  
-  
-    
-    return match;
-  }
-
+        return match;
+        }
 }
-
