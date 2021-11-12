@@ -25,6 +25,7 @@
          this.teamName = teamName;
          this.totalMatches = totalMatches;
      }
+   
      // to string when ever the team objects is created 
      @Override
      public String toString() {
@@ -58,7 +59,8 @@
          this.totalWins = totalWins;
      }
      //###
- 
+
+     //This helps with allowing us to populate it ourselves
      @Transient
      private List<Match> matches;
  
@@ -68,6 +70,9 @@
      public void setMatches(List<Match> matches) {
          this.matches = matches;
      }
+     public Team(){
+
+    }
  }
  
      

@@ -55,7 +55,11 @@ public void afterJob(JobExecution jobExecution) {
       .stream()
       .forEach(e -> {
           Team team = teamData.get((String) e[0]);
+          System.out.println("heelo" + teamData.get((String) e[0]) );
+          System.out.println("Before total matches"+ team.getTotalMatches());
           team.setTotalMatches(team.getTotalMatches() + (long) e[1]);
+          System.out.println("After total matches"+ team.getTotalMatches());
+
       });
 
       em.createQuery("select m.mapWinner, count(*) from Match m group by m.mapWinner", Object[].class)

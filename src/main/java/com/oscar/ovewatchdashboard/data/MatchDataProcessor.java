@@ -14,7 +14,7 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match> {
     @Override
     public Match process(final MatchInput matchInput) throws Exception {
         Match match = new Match();
-        System.out.println(matchInput.getRound_start_time());
+        // System.out.println(matchInput.getRound_start_time());
         match.setRoundStartTime((LocalDate.parse(matchInput.getRound_start_time())));
         match.setMatchId(Integer.parseInt(matchInput.getMatch_id()));
         match.setGameNumber(Long.parseLong(matchInput.getGame_number()));
@@ -28,7 +28,7 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match> {
         match.setAttacker(matchInput.getAttacker());
         match.setDefender(matchInput.getDefender());
         match.setAttackerPayloadDistance(Double.parseDouble(matchInput.getAttacker_payload_distance()));
-
+        match.setMapName(matchInput.getMap_name());
         return match;
         }
 }
