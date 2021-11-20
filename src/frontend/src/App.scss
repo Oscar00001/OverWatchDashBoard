@@ -1,8 +1,18 @@
+
 .App {
-  text-align: center;
+  padding: 20px;
+  text-align: left;
 }
 
-.App-logo {
+.won-card {
+  background-color: #4da375;
+}
+
+.lost-card {
+  background-color: #a34d5d;
+}
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +45,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

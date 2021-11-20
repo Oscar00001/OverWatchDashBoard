@@ -1,5 +1,0 @@
-startTime,id,tournamentTitle,mapType,mapName,playerName,teamName,statName,heroName,statAmount,
-
-using crt d
-  ctrl alt up 
-  ctrl space #imports 
